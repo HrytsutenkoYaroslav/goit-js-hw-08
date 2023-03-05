@@ -1,18 +1,27 @@
-import { galleryItems } from './gallery-items.js';
-// Change code below this line
+import Player from '@vimeo/player';
+import throttle from 'lodash.throttle';
 
-console.log(galleryItems);
+const iframe = document.querySelector('iframe');
+const player = new Player(iframe);
 
-const galleryContainer = document.querySelector('.gallery');
+player.getVideoTitle().then(function (title) {});
 
-function galleryCreate(galleryItems) {
-   return galleryItems.map(({preview, original, description}) => {
-        return `<a class="gallery__item" href="${original}">
-        <img class="gallery__image" src="${preview}" alt="${description}" />
-      </a>`
-    }).join("")
-} 
-galleryContainer.insertAdjacentHTML('afterbegin', galleryCreate(galleryItems))
+const onPlay = function (data) {
+  const currentTime = data.seconds;
+  localStorage.setItem('videoplayer-current-time', currentTime);
+};
 
+player.on('timeupdate', throttle(onPlay, 1000));
 
-const lightbox = new SimpleLightbox('.gallery a', { captionsData: 'alt', captionDelay: 250, });
+player
+  .setCurrentTime(localStorage.getItem('videoplayer-current-time'))
+  .then(function (seconds) {})
+  .catch(function (error) {
+    switch (error.name) {
+      case 'RangeError':
+        break;
+
+      default:
+        break;
+    }
+  });
