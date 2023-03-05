@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {
   "printWidth": 80,
   "useTabs": false,
@@ -8,3 +9,15 @@
   "arrowParens": "avoid",
   "proseWrap": "always"
 }
+=======
+{
+  "printWidth": 80,
+  "useTabs": false,
+  "semi": true,
+  "singleQuote": true,
+  "trailingComma": "es5",
+  "bracketSpacing": true,
+  "arrowParens": "avoid",
+  "proseWrap": "always"
+}
+>>>>>>> b54213f5665f9516ceab203775ca4904f0a9fd1f
